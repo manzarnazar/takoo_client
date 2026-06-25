@@ -6,14 +6,14 @@ import CustomContainer from "../container";
 const bannerBoxSx = {
   position: "relative",
   width: "100%",
-  aspectRatio: "3 / 1",
-  minHeight: { xs: "200px", sm: "260px", md: "340px" },
   borderRadius: "20px",
   overflow: "hidden",
-  display: "flex",
-  alignItems: "center",
-  justifyContent: "center",
+  lineHeight: 0,
   "& img": {
+    width: "100%",
+    height: "auto",
+    display: "block",
+    objectFit: "contain",
     borderRadius: "20px",
   },
 };
@@ -31,9 +31,9 @@ const DiscountBanner = ({ bannerImage, isSmall }) => {
         <CustomImageContainer
           src={bannerImage}
           alt="banner"
-          height="100%"
+          height="auto"
           width="100%"
-          objectfit="cover"
+          objectfit="contain"
           borderRadius="20px"
         />
       </Box>
