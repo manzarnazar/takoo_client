@@ -16,30 +16,18 @@ import { styled } from "@mui/material/styles";
 
 export const ImageContainer = styled(Box)(({ theme }) => ({
   position: "relative",
-  width: "100%",
-  maxWidth: "440px",
-  aspectRatio: "1",
-  minHeight: "340px",
+  width: "220px",
+  height: "220px",
   flexShrink: 0,
-  borderRadius: "12px",
+  borderRadius: "16px",
   overflow: "hidden",
-  display: "flex",
-  alignItems: "center",
-  justifyContent: "center",
-  "& > *": {
-    width: "100%",
-    height: "100%",
-    display: "flex",
-    alignItems: "center",
-    justifyContent: "center",
-  },
   [theme.breakpoints.down("md")]: {
-    maxWidth: "360px",
-    minHeight: "300px",
+    width: "190px",
+    height: "190px",
   },
   [theme.breakpoints.down("sm")]: {
-    maxWidth: "280px",
-    minHeight: "240px",
+    width: "160px",
+    height: "160px",
   },
 }));
 
@@ -52,8 +40,7 @@ const Registration = ({
   return (
     <Box
       sx={{
-        p: { xs: "20px", md: "40px" },
-        minHeight: { md: "380px" },
+        p: { xs: "16px", md: "30px" },
         boxShadow:
           "0px 8px 15px 0px #1C1E2008, 0px 0px 2px 0px #1C1E2014",
         borderRadius: "12px",
@@ -89,7 +76,7 @@ const Registration = ({
                   width="100%"
                   height="100%"
                   objectfit="contain"
-                  borderRadius="12px"
+                  borderRadius="16px"
                 />
               </ImageContainer>
             </Grid>

@@ -6,9 +6,26 @@ import {
   CustomStackFullWidth,
   SliderCustom,
 } from "styled-components/CustomStyles.style";
-import CustomImageContainer from "../CustomImageContainer";
 import CustomContainer from "../container";
 import NextImage from "components/NextImage";
+
+const promoSquareSx = {
+  position: "relative",
+  borderRadius: "24px",
+  overflow: "hidden",
+  width: "100%",
+  maxWidth: "620px",
+  "img": {
+    width: "100%",
+    height: "100%",
+    objectFit: "cover",
+    borderRadius: "24px",
+  },
+  "@media (min-width: 1000px)": {
+    width: "590px",
+    minHeight: "550px",
+  },
+};
 
 const Banners = ({ promotionalBanner, isSmall, feature }) => {
   const infiniteManage = () => {
@@ -40,45 +57,39 @@ const Banners = ({ promotionalBanner, isSmall, feature }) => {
       }
     }
   };
+
+  const promoBoxSx = (theme) => ({
+    border: `1px solid ${alpha(theme.palette.primary.main, 0.15)}`,
+    ...promoSquareSx,
+  });
+
   const twoItemManage = () => {
     return (
       <CustomStackFullWidth
         justifyContent="center"
         flexDirection="row"
         gap="20px"
+        sx={{ flexWrap: { xs: "wrap", md: "nowrap" } }}
       >
-        {/* <Grid container spacing={2}> */}
         {promotionalBanner?.map((item, index) => {
           return (
             <Box
               key={index}
-              sx={{
-                border: (theme) =>
-                  `0.828571px solid ${alpha(theme.palette.primary.main, 0.15)}`,
-                position: "relative",
-
-                width: { sm: "100%", md: "590px" },
-                borderRadius: "20px",
-                overflow: "hidden",
-                aspectRatio: "5 / 2",
-                minHeight: { xs: "180px", md: "280px" },
-                "img": {
-                  height: "100%",
-                  maxWidth: "100%",
-                  width: "100%",
-                  objectFit: "cover",
-                  borderRadius: "20px",
-                }
-              }}
+              sx={(theme) => ({
+                ...promoBoxSx(theme),
+                flex: { md: "1 1 0" },
+                width: { xs: "100%", md: "calc(50% - 10px)" },
+                maxWidth: { xs: "100%", md: "620px" },
+              })}
             >
               <NextImage
                 src={item}
                 alt="banners"
-                height={280}
+                height={550}
                 width={590}
                 objectFit="cover"
-                borderRadius="20px"
-                aspectRatio="5/2"
+                borderRadius="24px"
+                style={{ width: "100%", height: "100%" }}
               />
             </Box>
           );
@@ -86,16 +97,17 @@ const Banners = ({ promotionalBanner, isSmall, feature }) => {
       </CustomStackFullWidth>
     );
   };
+
   const sliderManage = () => {
     return (
       <SliderCustom
         sx={{
           "& .slick-slider": {
             "& .slick-slide": {
-
+              padding: "0 10px",
               "img": {
                 width: "100%",
-              }
+              },
             },
           },
         }}
@@ -103,38 +115,15 @@ const Banners = ({ promotionalBanner, isSmall, feature }) => {
         <Slider {...settings}>
           {promotionalBanner?.map((item, index) => {
             return (
-              <Box
-                key={index}
-                sx={{
-                  border: (theme) =>
-                    `0.828571px solid ${alpha(
-                      theme.palette.primary.main,
-                      0.15
-                    )}`,
-                  position: "relative",
-
-                  width: "100%",
-                  borderRadius: "20px",
-                  overflow: "hidden",
-                  aspectRatio: "5 / 2",
-                  minHeight: { xs: "180px", md: "280px" },
-                  "img": {
-                    height: "100%",
-                    maxWidth: "100%",
-                    width: "100%",
-                    objectFit: "cover",
-                    borderRadius: "20px",
-                  }
-                }}
-              >
+              <Box key={index} sx={(theme) => promoBoxSx(theme)}>
                 <NextImage
                   src={item}
                   alt="banners"
-                  height={300}
+                  height={550}
                   width={590}
                   objectFit="cover"
-                  borderRadius="20px"
-
+                  borderRadius="24px"
+                  style={{ width: "100%", height: "100%" }}
                 />
               </Box>
             );
@@ -143,6 +132,7 @@ const Banners = ({ promotionalBanner, isSmall, feature }) => {
       </SliderCustom>
     );
   };
+
   const settings = {
     dots: false,
     infinite: infiniteManage(),
@@ -177,46 +167,30 @@ const Banners = ({ promotionalBanner, isSmall, feature }) => {
       },
     ],
   };
+
   const singleImageManage = () => {
     return (
-      <Stack
-        sx={{
-          display: "flex",
-          alignItems: "center",
-        }}
-      >
+      <Stack alignItems="center">
         <Box
-          sx={{
-            border: (theme) =>
-              `1px solid ${alpha(theme.palette.primary.main, 0.15)}`,
-            position: "relative",
-
-            borderRadius: "20px",
-            width: "100%",
-            overflow: "hidden",
-            aspectRatio: "5 / 2",
-            minHeight: { xs: "200px", md: "320px" },
-            "img": {
-              width: "100%",
-              height: "100%",
-              objectFit: "cover",
-              borderRadius: "20px",
-            }
-          }}
+          sx={(theme) => ({
+            ...promoBoxSx(theme),
+            maxWidth: { xs: "100%", md: "620px" },
+          })}
         >
           <NextImage
             src={promotionalBanner[0]?.img}
             alt="banners"
-            height={320}
-            width={1250}
+            height={550}
+            width={590}
             objectFit="cover"
-            borderRadius="20px"
-
+            borderRadius="24px"
+            style={{ width: "100%", height: "100%" }}
           />
         </Box>
       </Stack>
     );
   };
+
   const handleContent = () => {
     if (isSmall) {
       if (promotionalBanner?.length === 1) {
@@ -234,6 +208,7 @@ const Banners = ({ promotionalBanner, isSmall, feature }) => {
       }
     }
   };
+
   return (
     <CustomContainer>
       <Stack sx={{ marginY: isSmall ? "22px" : "40px" }}>

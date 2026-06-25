@@ -5,7 +5,6 @@ import {
   Button,
   Grid,
   useTheme,
-  Stack,
 } from "@mui/material";
 import { ImageContainer } from "../Registration";
 import CustomImageContainer from "components/CustomImageContainer";
@@ -29,8 +28,7 @@ const DeliveryManAppDownload: React.FC<DeliveryManAppDownloadProps> = ({
   return (
     <Box
       sx={{
-        p: { xs: "20px", md: "40px" },
-        minHeight: { md: "380px" },
+        p: { xs: "16px", md: "30px" },
         boxShadow: "0px 8px 15px 0px #1C1E2008, 0px 0px 2px 0px #1C1E2014",
         borderRadius: "12px",
         background: (theme) => theme.palette.neutral[100],
@@ -39,12 +37,8 @@ const DeliveryManAppDownload: React.FC<DeliveryManAppDownloadProps> = ({
       }}
     >
       <Grid container spacing={4} alignItems="center">
-        <Grid
-          item
-          xs={12}
-          md={5}
-          sx={{ order: { xs: 3, md: 1 } }}
-        >
+        {/* Download — left */}
+        <Grid item xs={12} md={5} sx={{ order: { xs: 3, md: 1 } }}>
           <Box
             sx={{
               maxWidth: "470px",
@@ -112,7 +106,7 @@ const DeliveryManAppDownload: React.FC<DeliveryManAppDownloadProps> = ({
                   textAlign={{ xs: "center", sm: "left" }}
                 >
                   {deliveryManApp?.download_dm_app_button_sub_title ??
-                    t("Take control of your rides anywhere.")}
+                    t("Smart shopping starts here.")}
                 </Typography>
 
                 <AppLinks
@@ -132,82 +126,89 @@ const DeliveryManAppDownload: React.FC<DeliveryManAppDownloadProps> = ({
           </Box>
         </Grid>
 
-        <Grid item xs={12} md={7} sx={{ order: { xs: 1, md: 2 } }}>
-          <Stack
-            direction={{ xs: "column", md: "row" }}
-            spacing={{ xs: 2, md: 3 }}
-            alignItems="center"
-            sx={{ width: "100%" }}
+        {/* Text + image — right */}
+        <Grid
+          container
+          item
+          xs={12}
+          md={7}
+          spacing={3}
+          alignItems="center"
+          sx={{ order: { xs: 1, md: 2 }, flexWrap: { md: "nowrap" } }}
+        >
+          <Grid
+            item
+            xs={12}
+            sm={7}
+            md={7}
+            sx={{
+              textAlign: { xs: "center", md: "left" },
+              minWidth: 0,
+              order: { xs: 2, md: 1 },
+            }}
           >
-            <Box
-              sx={{
-                textAlign: { xs: "center", md: "left" },
-                order: { xs: 2, md: 1 },
-                flex: 1,
-                minWidth: 0,
-              }}
+            <Typography
+              variant="h4"
+              fontSize={{ xs: "18px", md: "28px" }}
+              sx={{ fontWeight: "600" }}
             >
-              <Typography
-                variant="h4"
-                fontSize={{ xs: "18px", md: "28px" }}
-                sx={{ fontWeight: "600" }}
-              >
-                <DollarSignHighlighter
-                  text={deliveryManApp?.download_dm_app_title}
-                  theme={theme}
-                />
-              </Typography>
-
-              <Typography
-                fontSize={{ xs: "14px", md: "16px" }}
-                color={theme.palette.neutral[600]}
-                my=".8rem"
-                textAlign={{ xs: "center", md: "left" }}
-                dangerouslySetInnerHTML={{
-                  __html: deliveryManApp?.download_dm_app_sub_title ?? "",
-                }}
+              <DollarSignHighlighter
+                text={deliveryManApp?.download_dm_app_title}
+                theme={theme}
               />
+            </Typography>
 
-              <Link
-                href={{ pathname: "/deliveryman-registration" }}
-                prefetch={false}
-              >
-                <Button
-                  variant="contained"
-                  sx={{
-                    borderRadius: "10px",
-                    padding: "8px 18px",
-                    marginTop: ".5rem",
-                  }}
-                >
-                  {deliveryManApp?.download_dm_app_content_button_title ||
-                    "Start Earning"}
-                  <ArrowForwardIcon sx={{ ml: 1, fontSize: "20px" }} />
-                </Button>
-              </Link>
-            </Box>
-
-            <Box
-              sx={{
-                display: "flex",
-                alignItems: "center",
-                justifyContent: { xs: "center", md: "flex-end" },
-                order: { xs: 1, md: 2 },
-                flexShrink: 0,
+            <Typography
+              fontSize={{ xs: "14px", md: "16px" }}
+              color={theme.palette.neutral[600]}
+              my=".8rem"
+              textAlign={{ xs: "center", md: "left" }}
+              dangerouslySetInnerHTML={{
+                __html: deliveryManApp?.download_dm_app_sub_title ?? "",
               }}
+            />
+
+            <Link
+              href={{ pathname: "/deliveryman-registration" }}
+              prefetch={false}
             >
-              <ImageContainer>
-                <CustomImageContainer
-                  src={deliveryManApp?.download_dm_app_image_full_url}
-                  alt="delivery man"
-                  width="100%"
-                  height="100%"
-                  objectfit="contain"
-                  borderRadius="12px"
-                />
-              </ImageContainer>
-            </Box>
-          </Stack>
+              <Button
+                variant="contained"
+                sx={{
+                  borderRadius: "10px",
+                  padding: "8px 18px",
+                  marginTop: ".5rem",
+                }}
+              >
+                {deliveryManApp?.download_dm_app_content_button_title ||
+                  "Start Earning"}
+                <ArrowForwardIcon sx={{ ml: 1, fontSize: "20px" }} />
+              </Button>
+            </Link>
+          </Grid>
+
+          <Grid
+            item
+            xs={12}
+            sm={5}
+            md={5}
+            sx={{
+              display: "flex",
+              justifyContent: { xs: "center", md: "flex-end" },
+              order: { xs: 1, md: 2 },
+            }}
+          >
+            <ImageContainer>
+              <CustomImageContainer
+                src={deliveryManApp?.download_dm_app_image_full_url}
+                alt="delivery man"
+                width="100%"
+                height="100%"
+                objectfit="contain"
+                borderRadius="16px"
+              />
+            </ImageContainer>
+          </Grid>
         </Grid>
       </Grid>
     </Box>
