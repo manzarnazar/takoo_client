@@ -99,6 +99,7 @@ const LandingPage = ({ configData, landingPageData }) => {
               <Registration
                 configData={configData}
                 seller_app_download_section={landingPageData?.seller_app_download_section}
+                user_app_download_section={landingPageData?.user_app_download_section}
                 isSmall={isSmall}
               />
             ) : null}

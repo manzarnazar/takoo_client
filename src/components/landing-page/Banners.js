@@ -60,25 +60,25 @@ const Banners = ({ promotionalBanner, isSmall, feature }) => {
                 width: { sm: "100%", md: "590px" },
                 borderRadius: "20px",
                 overflow: "hidden",
-                aspectRatio: "3/1",
+                aspectRatio: "5 / 2",
+                minHeight: { xs: "180px", md: "280px" },
                 "img": {
                   height: "100%",
                   maxWidth: "100%",
                   width: "100%",
-
-
-                  // border: "1px solid"
+                  objectFit: "cover",
+                  borderRadius: "20px",
                 }
               }}
             >
               <NextImage
                 src={item}
                 alt="banners"
-                height={173}
+                height={280}
                 width={590}
                 objectFit="cover"
                 borderRadius="20px"
-                aspectRatio="3/1"
+                aspectRatio="5/2"
               />
             </Box>
           );
@@ -116,21 +116,21 @@ const Banners = ({ promotionalBanner, isSmall, feature }) => {
                   width: "100%",
                   borderRadius: "20px",
                   overflow: "hidden",
-                  aspectRatio: "3/1",
+                  aspectRatio: "5 / 2",
+                  minHeight: { xs: "180px", md: "280px" },
                   "img": {
                     height: "100%",
                     maxWidth: "100%",
                     width: "100%",
-
-
-                    // border: "1px solid"
+                    objectFit: "cover",
+                    borderRadius: "20px",
                   }
                 }}
               >
                 <NextImage
                   src={item}
                   alt="banners"
-                  height={200}
+                  height={300}
                   width={590}
                   objectFit="cover"
                   borderRadius="20px"
@@ -191,24 +191,26 @@ const Banners = ({ promotionalBanner, isSmall, feature }) => {
               `1px solid ${alpha(theme.palette.primary.main, 0.15)}`,
             position: "relative",
 
-            borderRadius: "5px",
+            borderRadius: "20px",
             width: "100%",
-            aspectRatio: "3/1",
+            overflow: "hidden",
+            aspectRatio: "5 / 2",
+            minHeight: { xs: "200px", md: "320px" },
             "img": {
               width: "100%",
               height: "100%",
               objectFit: "cover",
-              // border: "1px solid"
+              borderRadius: "20px",
             }
           }}
         >
           <NextImage
             src={promotionalBanner[0]?.img}
             alt="banners"
-            height={175}
+            height={320}
             width={1250}
             objectFit="cover"
-            borderRadius="5px"
+            borderRadius="20px"
 
           />
         </Box>
