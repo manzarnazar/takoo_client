@@ -89,7 +89,7 @@ const AvailableZoneSection = ({ zoneSection }) => {
 									borderRadius: "3px",
 								},
 								"&::-webkit-scrollbar-thumb:hover": {
-									backgroundColor: "#003638",
+									backgroundColor: "#8B0050",
 								},
 							}}
 						>
@@ -145,7 +145,7 @@ const AvailableZoneSection = ({ zoneSection }) => {
 										borderRadius: "3px",
 									},
 									"&::-webkit-scrollbar-thumb:hover": {
-										backgroundColor: "#003638",
+										backgroundColor: "#8B0050",
 									},
 									alignItems: "center",
 									justifyContent: "center",

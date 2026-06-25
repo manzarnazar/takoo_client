@@ -30,7 +30,7 @@ const CustomConnector = styled(StepConnector)(({ theme }) => ({
 const CustomStep = styled(Step)(({ theme, active, complete, isSmallSize }) => ({
   "& .MuiStepLabel-root": {
     //background: active ? alpha(theme.palette.primary.main, 0.2) : "transparent",
-    color: complete ? "green" : active ? "white" : theme.palette.grey[600],
+    color: complete ? theme.palette.primary.main : active ? "white" : theme.palette.grey[600],
     padding: isSmallSize ? "10px" : "15px 37px",
     alignItems: "center",
     justifyContent: "center",
@@ -40,7 +40,7 @@ const CustomStep = styled(Step)(({ theme, active, complete, isSmallSize }) => ({
     // marginTop: isSmallSize ? 0 : "5px",
     fontWeight: 400,
     color: complete
-      ? "green"
+      ? theme.palette.primary.main
       : active
       ? theme.palette.text.primary
       : theme.palette.grey[500],
@@ -104,14 +104,14 @@ const CustomStepper = ({ activeStep, flag }) => {
                   content: '""',
                   borderLeft: `${isSmallSize ? "1px" : "2px"} solid ${
                     isComplete
-                      ? "green"
+                      ? theme.palette.primary.main
                       : activeStep === index
                       ? theme.palette.primary.main
                       : theme.palette.neutral[400]
                   }`,
                   borderTop: `${isSmallSize ? "1px" : "2px"} solid ${
                     isComplete
-                      ? "green"
+                      ? theme.palette.primary.main
                       : activeStep === index
                       ? theme.palette.primary.main
                       : theme.palette.neutral[400]

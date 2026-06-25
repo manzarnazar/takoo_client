@@ -29,7 +29,7 @@ class CustomDocument extends Document {
             src="https://appleid.cdn-apple.com/appleauth/static/jsapi/appleid/1/en_US/appleid.auth.js"
             async
           />
-          <meta name="theme-color" content="#111827" />
+          <meta name="theme-color" content="#E4007C" />
 
           {/* ✅ Analytics scripts */}
           {analyticsConfig.google_tag_manager && (

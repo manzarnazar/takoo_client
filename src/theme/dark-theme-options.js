@@ -40,16 +40,16 @@ const foodCardColor = neutral[800];
 const roundStackOne = "rgba(255, 255, 255, 0.04)";
 const roundStackTwo = "rgba(255, 255, 255, 0.06)";
 const primary = {
-  main: "#039D55",
-  light: "#909BEF",
-  dark: "#1c6641",
-  deep: "#026034",
+  main: "#E4007C",
+  light: "#FF4DA6",
+  dark: "#B80063",
+  deep: "#A8005F",
   contrastText: neutral[900],
-  semiLight: "#E4FFF3",
+  semiLight: "#FCE4F0",
   overLay: "#000000",
-  customType2: "#3BB77E",
-  lite: "rgba(3, 157, 85, 0.1)",
-  customType3: "#29CE00",
+  customType2: "#D40072",
+  lite: "rgba(228, 0, 124, 0.1)",
+  customType3: "#FF4DA6",
   icon: "#ffffff",
 };
 
@@ -104,12 +104,12 @@ const text = {
   customText1: "#EDF2F7",
 };
 const footer = {
-  inputButton: "#BBFFDF",
-  inputButtonHover: "#67907e",
-  bottom: "rgba(0, 98, 52, 0.3)",
+  inputButton: "#F5B8D9",
+  inputButtonHover: "#C4669A",
+  bottom: "rgba(228, 0, 124, 0.3)",
   foodBottom: "#686B78",
   appDownloadButtonBg: "#1A1A1A",
-  appDownloadButtonBgGray: "#3E594D",
+  appDownloadButtonBgGray: "#4A2036",
   foodFooterBg: "#414141",
 };
 const customColor = {

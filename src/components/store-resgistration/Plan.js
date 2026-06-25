@@ -17,8 +17,8 @@ const PlanItemContainer = styled(Box)(({ theme, isActive, activeItem }) => ({
   "--border-clr": isActive
     ? theme.palette.neutral[400]
     : theme.palette.neutral[300],
-  "--success": isActive ? "#ffffff" : "#039d55",
-  "--primary-clr": isActive ? "#f99c4d" : "#00868f",
+  "--success": isActive ? "#ffffff" : "#E4007C",
+  "--primary-clr": isActive ? "#f99c4d" : "#B80063",
   backgroundColor: isActive
     ? theme.palette.primary.main
     : theme.palette.neutral[100],
@@ -39,7 +39,7 @@ const InnerDiv = styled(Box)(({ theme, isActive }) => ({
   padding: "39px 16px 30px",
   borderRadius: "inherit",
   position: "relative",
-  color: isActive ? theme.palette.neutral[100] : "#00868f",
+  color: isActive ? theme.palette.neutral[100] : "#B80063",
   "&::before": {
     content: '""',
     position: "absolute",

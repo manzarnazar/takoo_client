@@ -251,7 +251,7 @@ export const CustomTimePicker = styled(MobileTimePicker)(({ theme }) => ({
 	},
 
 	"& .MuiInputLabel-root": {
-		color: "green", // Customize the label color
+		color: theme.palette.primary.main,
 		// Add any other custom styles as needed
 	},
 
