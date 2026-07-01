@@ -7,8 +7,10 @@ const getData = async () => {
     return data;
 };
 
-export default function useGetLandingPage() {
+export default function useGetLandingPage(initialData) {
     return useQuery("landing-page-data", getData, {
         enabled: false,
+        initialData,
+        staleTime: 0,
     });
 }

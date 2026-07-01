@@ -69,7 +69,7 @@ const LandingPage = ({ configData, landingPageData }) => {
   return (
     <>
       <PushNotificationLayout>
-        {landingPageData?.hero_slider_section?.hero_slider_section_status === 1 &&
+        {Number(landingPageData?.hero_slider_section?.hero_slider_section_status) === 1 &&
           landingPageData?.hero_slider_section?.slides?.length > 0 ? (
           <HeroSlider slides={landingPageData.hero_slider_section.slides} />
         ) : null}

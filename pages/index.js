@@ -1,26 +1,36 @@
 import { LandingLayout } from "components/layout/LandingLayout";
 import LandingPage from "../src/components/landing-page";
 import CssBaseline from "@mui/material/CssBaseline";
-import React, { useEffect } from "react";
+import React, { useEffect, useMemo } from "react";
 import { useDispatch } from "react-redux";
 import { setConfigData, setLandingPageData } from "redux/slices/configData";
 import Router from "next/router";
 import SEO from "../src/components/seo";
 import useGetLandingPage from "../src/api-manage/hooks/react-query/useGetLandingPage";
 import { useGetConfigData } from "../src/api-manage/hooks/useGetConfigData";
-import { RTL } from "components/rtl";
 
 const Root = (props) => {
-	const { configData, landingPageData } = props;
-	const { data, refetch } = useGetLandingPage();
+	const { configData: ssrConfigData, landingPageData: ssrLandingPageData } = props;
+	const { data, refetch } = useGetLandingPage(ssrLandingPageData);
 	const dispatch = useDispatch();
 	const { data: dataConfig, refetch: configRefetch } = useGetConfigData();
+	const landingPageData = useMemo(
+		() => data ?? ssrLandingPageData,
+		[data, ssrLandingPageData]
+	);
+	const configData = useMemo(
+		() => dataConfig ?? ssrConfigData,
+		[dataConfig, ssrConfigData]
+	);
+
 	useEffect(() => {
 		configRefetch();
 		refetch();
 	}, []);
 	useEffect(() => {
-		dispatch(setLandingPageData(data));
+		if (landingPageData) {
+			dispatch(setLandingPageData(landingPageData));
+		}
 		if (dataConfig) {
 			if (dataConfig.length === 0) {
 				Router.push("/404");
@@ -29,20 +39,12 @@ const Root = (props) => {
 			} else {
 				dispatch(setConfigData(dataConfig));
 			}
-		} else {
 		}
-	}, [dataConfig, data]);
-	let lanDirection = undefined;
+	}, [dataConfig, landingPageData, dispatch]);
 
-	if (typeof window !== "undefined") {
-		lanDirection = JSON.parse(localStorage.getItem("settings"));
-		// languageSetting = JSON.parse(localStorage.getItem("language-setting"));
-	}
-	// console.log({ lanDirection })
 	return (
 		<>
 			<CssBaseline />
-			{/* <DynamicFavicon configData={configData} /> */}
 			<SEO
 				image={landingPageData?.meta_image || configData?.fav_icon_full_url}
 				businessName={configData?.business_name}
@@ -50,14 +52,12 @@ const Root = (props) => {
 				title={landingPageData?.meta_title || configData?.business_name}
 				description={landingPageData?.meta_description || configData?.meta_description}
 			/>
-			{data && (
-				<LandingLayout configData={dataConfig} landingPageData={data}>
-
+			{landingPageData && (
+				<LandingLayout configData={configData} landingPageData={landingPageData}>
 					<LandingPage
-						configData={dataConfig}
-						landingPageData={data}
+						configData={configData}
+						landingPageData={landingPageData}
 					/>
-
 				</LandingLayout>
 			)}
 		</>
