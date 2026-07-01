@@ -9,6 +9,7 @@ import PushNotificationLayout from "../PushNotificationLayout";
 import ComponentTwo from "./ComponentTwo";
 import DiscountBanner from "./DiscountBanner";
 import HeroSection from "./hero-section/HeroSection";
+import HeroSlider from "./hero-slider/HeroSlider";
 import Registration from "./Registration";
 import CustomContainer from "components/container";
 import Banners from "components/landing-page/Banners";
@@ -68,6 +69,10 @@ const LandingPage = ({ configData, landingPageData }) => {
   return (
     <>
       <PushNotificationLayout>
+        {landingPageData?.hero_slider_section?.hero_slider_section_status === 1 &&
+          landingPageData?.hero_slider_section?.slides?.length > 0 ? (
+          <HeroSlider slides={landingPageData.hero_slider_section.slides} />
+        ) : null}
         <HeroSection landingPageDataheroSection={landingPageData?.hero_section} />
         {landingPageData?.trust_section?.trust_section_status === 1 ? (
           <StatsSection trustSectionData={landingPageData?.trust_section} />
