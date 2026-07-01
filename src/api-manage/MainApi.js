@@ -15,7 +15,11 @@ MainApi.interceptors.request.use(function (config) {
   if (typeof window !== "undefined") {
     zoneid = localStorage.getItem("zoneid");
     token = localStorage.getItem("token");
-    language = JSON.parse(localStorage.getItem("language-setting"));
+    try {
+      language = JSON.parse(localStorage.getItem("language-setting"));
+    } catch (e) {
+      language = "en";
+    }
     currentLocation = JSON.parse(localStorage.getItem("currentLatLng"));
     moduleid = JSON.parse(localStorage.getItem("module"))?.id;
   }
@@ -24,7 +28,9 @@ MainApi.interceptors.request.use(function (config) {
   if (zoneid) config.headers.zoneid = zoneid;
   if (moduleid) config.headers.moduleId = moduleid;
   if (token) config.headers.authorization = `Bearer ${token}`;
-  if (language) config.headers["X-localization"] = language;
+  if (language && language !== "undefined" && language !== "null") {
+    config.headers["X-localization"] = language;
+  }
   if (hostname) config.headers["origin"] = hostname;
   config.headers["X-software-id"] = software_id;
   config.headers["Accept"] = 'application/json'
