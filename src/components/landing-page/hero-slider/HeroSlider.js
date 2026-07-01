@@ -1,27 +1,15 @@
 import { Box } from "@mui/material";
 import dynamic from "next/dynamic";
 import React from "react";
+import { getHeroSliderSx } from "./heroSliderStyles";
 
 const HeroSliderCarousel = dynamic(() => import("./HeroSliderCarousel"), {
   ssr: false,
 });
 
-const heroSliderSx = {
-  width: "100vw",
-  maxWidth: "100vw",
-  height: "80vh",
-  marginLeft: "calc(50% - 50vw)",
-  position: "relative",
-  overflow: "hidden",
-  "& img": {
-    width: "100%",
-    height: "100%",
-    objectFit: "cover",
-    display: "block",
-  },
-};
-
 const HeroSlider = ({ slides }) => {
+  const heroSliderSx = getHeroSliderSx();
+
   const imageUrls = slides
     ?.map((slide) => slide?.image_full_url)
     .filter(Boolean);

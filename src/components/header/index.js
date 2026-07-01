@@ -13,7 +13,7 @@ import SecondNavBar from "./second-navbar/SecondNavbar";
 import TopNavBar from "./top-navbar/TopNavBar";
 
 
-const HeaderComponent = () => {
+const HeaderComponent = ({ stickyHeader = false }) => {
   const { configData } = useSelector((state) => state.configData);
   const theme = useTheme();
   const isSmall = useMediaQuery(theme.breakpoints.down("md"));
@@ -27,6 +27,7 @@ const HeaderComponent = () => {
 
   return (
     <AppBarStyle
+      stickyHeader={stickyHeader}
       scrolling={location || token ? scrolling : false}
       isSmall={isSmall}
     >

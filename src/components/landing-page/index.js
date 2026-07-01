@@ -65,15 +65,20 @@ const LandingPage = ({ configData, landingPageData }) => {
   }
   console.log({ landingPageData });
 
+  const showHeroSlider =
+    Number(landingPageData?.hero_slider_section?.hero_slider_section_status) === 1 &&
+    landingPageData?.hero_slider_section?.slides?.length > 0;
 
   return (
     <>
       <PushNotificationLayout>
-        {Number(landingPageData?.hero_slider_section?.hero_slider_section_status) === 1 &&
-          landingPageData?.hero_slider_section?.slides?.length > 0 ? (
+        {showHeroSlider ? (
           <HeroSlider slides={landingPageData.hero_slider_section.slides} />
         ) : null}
-        <HeroSection landingPageDataheroSection={landingPageData?.hero_section} />
+        <HeroSection
+          landingPageDataheroSection={landingPageData?.hero_section}
+          hasHeroSlider={showHeroSlider}
+        />
         {landingPageData?.trust_section?.trust_section_status === 1 ? (
           <StatsSection trustSectionData={landingPageData?.trust_section} />
         ) : null}

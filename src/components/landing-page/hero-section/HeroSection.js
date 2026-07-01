@@ -18,7 +18,7 @@ import DollarSignHighlighter from "components/DollarSignHighlighter";
 const DynamicModuleSelection = dynamic(() =>
   import("./module-selection/ModuleSelectionRaw")
 );
-const HeroSection = ({ landingPageDataheroSection }) => {
+const HeroSection = ({ landingPageDataheroSection, hasHeroSlider = false }) => {
   const theme = useTheme();
   const isXSmall = useMediaQuery(theme.breakpoints.down("sm"));
   const [currentLocation, setCurrentLocation] = useState(null);
@@ -30,6 +30,13 @@ const HeroSection = ({ landingPageDataheroSection }) => {
 
 
   const calculateTopMargin = () => {
+    if (hasHeroSlider) {
+      return {
+        xs: "1rem",
+        sm: "1.5rem",
+        md: "2rem",
+      };
+    }
     if (currentLocation) {
       return {
         xs: "4rem",

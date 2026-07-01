@@ -14,8 +14,19 @@ import bgImg from "../../../public/bgimge.jpg";
 
 import React from "react";
 
-export const AppBarStyle = styled(AppBar)(({ theme, scrolling, isSmall }) => ({
-  top: !scrolling ? "0" : isSmall ? "0px" : "-30px",
+export const AppBarStyle = styled(AppBar, {
+  shouldForwardProp: (prop) =>
+    prop !== "scrolling" && prop !== "isSmall" && prop !== "stickyHeader",
+})(({ theme, scrolling, isSmall, stickyHeader }) => ({
+  position: stickyHeader ? "sticky" : "fixed",
+  top: stickyHeader
+    ? 0
+    : !scrolling
+      ? "0"
+      : isSmall
+        ? "0px"
+        : "-30px",
+  zIndex: theme.zIndex.appBar,
   background: `${theme.palette.mode === "light" && "#fff !important"}`,
   transition: "all 0.4s ease",
   // WebkitAnimation: !isSmall && scrolling ? "fadeInUp 0.4s" : "fadeInDown 0.4s",

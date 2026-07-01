@@ -16,15 +16,17 @@ const HeroSliderCarousel = ({ imageUrls, sx }) => {
     speed: 800,
     autoplaySpeed: 4000,
     pauseOnHover: true,
-    adaptiveHeight: false,
+    adaptiveHeight: true,
   };
 
   return (
     <Box
       sx={{
         ...sx,
-        "& .slick-slider, & .slick-list, & .slick-track, & .slick-slide > div": {
-          height: "80vh",
+        "& .slick-slide img": {
+          width: "100%",
+          height: "auto",
+          display: "block",
         },
         "& .slick-dots": {
           bottom: "16px",
@@ -40,10 +42,10 @@ const HeroSliderCarousel = ({ imageUrls, sx }) => {
         },
       }}
     >
-      <SliderCustom sx={{ height: "100%" }}>
+      <SliderCustom>
         <Slider {...settings}>
           {imageUrls.map((src, index) => (
-            <Box key={index} sx={{ width: "100%", height: "80vh" }}>
+            <Box key={index}>
               <Box
                 component="img"
                 src={src}

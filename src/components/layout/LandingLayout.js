@@ -1,4 +1,4 @@
-import { NoSsr, Stack, styled } from "@mui/material";
+import { Box, Stack, styled } from "@mui/material";
 import HeaderComponent from "../header";
 import FooterComponent from "../footer";
 import PropTypes from "prop-types";
@@ -17,14 +17,12 @@ export const LandingLayout = ({ children, configData, landingPageData }) => {
   }, []);
 
   return (
-    <MainLayoutRoot justifyContent="space-between">
-      <header>
-        <HeaderComponent configData={configData} />
-      </header>
-      {children}
-      <footer>
-        <FooterComponent configData={configData} landingPageData={data} />
-      </footer>
+    <MainLayoutRoot>
+      <HeaderComponent stickyHeader configData={configData} />
+      <Box component="main" sx={{ width: "100%", flex: "1 0 auto" }}>
+        {children}
+      </Box>
+      <FooterComponent configData={configData} landingPageData={data ?? landingPageData} />
     </MainLayoutRoot>
   );
 };
